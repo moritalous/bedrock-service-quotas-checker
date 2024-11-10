@@ -146,6 +146,10 @@ def print_service_quotas(service_quotas: list):
         # Print each quota's details in a formatted string
         for item in items:
             item["key"] = key
+            item["QuotaName"] = item["QuotaName"].replace(
+                f"On-demand InvokeModel {key} for ", ""
+            )
+
             print(
                 "{key} | {QuotaName} | {Value} | {DefaultValue} | {Region} | {QuotaCode} ".format(
                     **item
@@ -184,7 +188,9 @@ if __name__ == "__main__":
 
     service_code = "bedrock"
 
-    print("Quota type | Quota name | Applied account-level quota value | AWS default quota value | Region | Quota code")
+    print(
+        "Quota type | Quota model | Applied account-level quota value | AWS default quota value | Region | Quota code"
+    )
 
     # Process and print quotas for each region
     for region in region_list:
