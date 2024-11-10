@@ -184,6 +184,8 @@ if __name__ == "__main__":
 
     service_code = "bedrock"
 
+    print("Quota type | Quota name | Applied account-level quota value | AWS default quota value | Region | Quota code")
+
     # Process and print quotas for each region
     for region in region_list:
         service_quotas = get_service_quotas(region=region, service_code=service_code)
